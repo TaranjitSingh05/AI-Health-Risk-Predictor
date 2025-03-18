@@ -3,14 +3,13 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
-import Navbar from './components/Navbar';
-import Chatbot from './components/Chatbot';
-import SplineBackground from './components/SplineBackground';
+import Layout from './components/Layout';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Landing from './pages/Landing';
 import Features from './pages/Features';
 import Auth from './pages/Auth';
+import Home from './pages/Home';
 
 function App() {
   return (
@@ -23,12 +22,9 @@ function App() {
               path="/"
               element={
                 <ProtectedRoute>
-                  <div className="relative">
-                    <SplineBackground url="https://prod.spline.design/cf4MsIbK0vltZaMO/scene.splinecode" />
-                    <Navbar />
+                  <Layout>
                     <Landing />
-                    <Chatbot />
-                  </div>
+                  </Layout>
                 </ProtectedRoute>
               }
             />
@@ -36,12 +32,9 @@ function App() {
               path="/features"
               element={
                 <ProtectedRoute>
-                  <div className="relative">
-                    <SplineBackground url="https://prod.spline.design/cf4MsIbK0vltZaMO/scene.splinecode" />
-                    <Navbar />
+                  <Layout>
                     <Features />
-                    <Chatbot />
-                  </div>
+                  </Layout>
                 </ProtectedRoute>
               }
             />
@@ -49,12 +42,9 @@ function App() {
               path="/about"
               element={
                 <ProtectedRoute>
-                  <div className="relative">
-                    <SplineBackground url="https://prod.spline.design/cf4MsIbK0vltZaMO/scene.splinecode" />
-                    <Navbar />
+                  <Layout>
                     <About />
-                    <Chatbot />
-                  </div>
+                  </Layout>
                 </ProtectedRoute>
               }
             />
@@ -62,12 +52,19 @@ function App() {
               path="/contact"
               element={
                 <ProtectedRoute>
-                  <div className="relative">
-                    <SplineBackground url="https://prod.spline.design/cf4MsIbK0vltZaMO/scene.splinecode" />
-                    <Navbar />
+                  <Layout>
                     <Contact />
-                    <Chatbot />
-                  </div>
+                  </Layout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/home"
+              element={
+                <ProtectedRoute>
+                  <Layout usesSpline={false}>
+                    <Home />
+                  </Layout>
                 </ProtectedRoute>
               }
             />
